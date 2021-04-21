@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">ADApp</string>
+    <string name="app_name">Hello, World</string>
+    <string name="my_name">Cathal Mullen 4/11/2021</string>
+    <string name="say_bye">Bye!</string>
+    <string name="sign_in">Sign In</string>
+    <string name="dog_description">Red Setter onlooking cows on road</string>
+
 </resources>
