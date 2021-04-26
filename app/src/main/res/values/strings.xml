@@ -7,7 +7,12 @@
     <string name="email">eg. example@email.com </string>
     <string name="username">eg. janedoe41 </string>
     <string name="fullnametext">Full Name </string>
-    <string name="welcome">Welcome <br /> Sign Up HERE! </string>
+    <string name="welcome">Welcome, Sign Up HERE! </string>
     <string name="emailtext">Email</string>
     <string name="signup">Sign Up</string>
+    <string name="continued">Next</string>
+    <string name="usernametext">User Name</string>
+    <string name="dateofbirth">Date of Birth</string>
+    <string name="welcomingName">Hello, ""</string>
+    <string name="back">Back</string>
 </resources>
