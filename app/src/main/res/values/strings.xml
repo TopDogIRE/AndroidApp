@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Hello, World</string>
-    <string name="my_name">Cathal Mullen 4/11/2021</string>
-    <string name="say_bye">Bye!</string>
-    <string name="sign_in">Sign In</string>
+    <string name="my_name">Cathal Mullen 4/23/2021</string>
     <string name="dog_description">Red Setter onlooking cows on road</string>
-
+    <string name="fullname">eg. Jane Doe </string>
+    <string name="dob">eg. 06/28/1999 </string>
+    <string name="email">eg. example@email.com </string>
+    <string name="username">eg. janedoe41 </string>
+    <string name="fullnametext">Full Name </string>
+    <string name="welcome">Welcome <br /> Sign Up HERE! </string>
+    <string name="emailtext">Email</string>
+    <string name="signup">Sign Up</string>
 </resources>
