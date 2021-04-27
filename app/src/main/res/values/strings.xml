@@ -13,6 +13,5 @@
     <string name="continued">Next</string>
     <string name="usernametext">User Name</string>
     <string name="dateofbirth">Date of Birth</string>
-    <string name="welcomingName">Hello, ""</string>
     <string name="back">Back</string>
 </resources>

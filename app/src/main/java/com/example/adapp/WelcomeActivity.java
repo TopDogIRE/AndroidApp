@@ -16,8 +16,13 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.welcomeName);
         username.setText(getIntent().getStringExtra("username"));
+
     }
 
+    public void onClickWelcomeToForm(View view){
+        Intent intent = new Intent(WelcomeActivity.this, FormActivity.class);
+        startActivity(intent);
+    }
 }
