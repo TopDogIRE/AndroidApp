@@ -10,17 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:requestLegacyExternalStorage="true">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormActivity">
-        </activity>
-        <activity android:name=".WelcomeActivity">
-        </activity>
+        <activity android:name=".ProfileActivity"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

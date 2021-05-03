@@ -1,17 +1,12 @@
 <resources>
-    <string name="app_name">Hello, World</string>
-    <string name="my_name">Cathal Mullen 4/23/2021</string>
-    <string name="dog_description">Red Setter onlooking cows on road</string>
-    <string name="fullname">eg. Jane Doe </string>
-    <string name="dob">eg. 06/28/1999 </string>
-    <string name="email">eg. example@email.com </string>
-    <string name="username">eg. janedoe41 </string>
-    <string name="fullnametext">Full Name </string>
-    <string name="welcome">Welcome, Sign Up HERE! </string>
-    <string name="emailtext">Email</string>
-    <string name="signup">Sign Up</string>
-    <string name="continued">Next</string>
-    <string name="usernametext">User Name</string>
-    <string name="dateofbirth">Date of Birth</string>
-    <string name="back">Back</string>
+    <string name="app_name">App Dev</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="my_name">Cathal Mullen 05/01/2021</string>
+    <string name="title">Sign Up!</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="title_activity_thanks">Thanks</string>
+    <string name="DOB">Date Of Birth</string>
+    <string name="age">Age</string>
 </resources>
