@@ -1,6 +1,5 @@
 package com.example.adapp;
 
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,20 +17,20 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private EditText email;
+    private EditText mTextView;
     private TextView dob;
     private EditText userName;
     private TextView age;
     private EditText bio;
     private EditText occupation;
-    private EditText eText;
+    private EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = findViewById(R.id.text);
+        mTextView = findViewById(R.id.text);
 
         dob = findViewById(R.id.dob);
         Button btPickDate = findViewById(R.id.btPickDate);
@@ -51,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        if(savedInstanceState.containsKey(Constants.KEY_MAIL)) {
-            email.setText(savedInstanceState.getString(Constants.KEY_MAIL));
+        if(savedInstanceState.containsKey(Constants.KEY_TEXTVIEW_TEXT)) {
+            mTextView.setText(savedInstanceState.getString(Constants.KEY_TEXTVIEW_TEXT));
         }
 
         if(savedInstanceState.containsKey(Constants.KEY_AGE)) {
@@ -64,40 +63,39 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState,outPersistentState);
 
-        outState.putString(Constants.KEY_MAIL, email.getText().toString());
-        outState.putString(Constants.KEY_AGE, dob.getText().toString());
+        outState.putString(Constants.KEY_TEXTVIEW_TEXT, mTextView.getText().toString());
+        outState.putString(Constants.KEY_AGE,dob.getText().toString());
 
     }
 
     public void submitForm(View view) {
-        email = findViewById(R.id.name);
+        mTextView = findViewById(R.id.name);
         userName = findViewById(R.id.username);
-        eText = findViewById(R.id.email);
+        email = findViewById(R.id.email);
         age = findViewById(R.id.dob);
         bio = findViewById(R.id.bio);
         occupation = findViewById(R.id.occupation);
 
-        if(!isValidEmail(eText.getText())){
-            eText.setError("Email not valid!");
+        if(!isValidEmail(email.getText())){
+            email.setError("Email not valid!");
             return;
         }
 
-        if(email.getText().toString().matches("")){
-            email.setError("Cannot Be Blank!");
+        if(mTextView.getText().toString().matches("")){
+            mTextView.setError("Cannot Be Blank!");
             return;
         }
-
 
         if(userName.getText().toString().matches("")){
             userName.setError("Cannot Be Blank!");
             return;
         }
 
-        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
         Bundle bundle = new Bundle();
 
 
-        bundle.putString(Constants.KEY_NAME, email.getText().toString());
+        bundle.putString(Constants.KEY_NAME, mTextView.getText().toString());
         bundle.putString(Constants.KEY_AGE, age.getText().toString());
         bundle.putString(Constants.KEY_BIO, bio.getText().toString());
         bundle.putString(Constants.KEY_OCC, occupation.getText().toString());
