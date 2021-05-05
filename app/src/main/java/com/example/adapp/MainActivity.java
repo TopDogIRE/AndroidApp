@@ -1,4 +1,6 @@
 package com.example.adapp;
+
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +18,12 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private EditText mTextView;
-    private TextView datePick;
+    private EditText email;
+    private TextView dob;
     private EditText userName;
     private TextView age;
+    private EditText bio;
+    private EditText occupation;
     private EditText eText;
 
     @Override
@@ -27,9 +31,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = findViewById(R.id.text);
+        email = findViewById(R.id.text);
 
-        datePick = findViewById(R.id.datePick);
+        dob = findViewById(R.id.dob);
         Button btPickDate = findViewById(R.id.btPickDate);
         btPickDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +51,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        if(savedInstanceState.containsKey(Constants.KEY_TEXTVIEW_TEXT)) {
-            mTextView.setText(savedInstanceState.getString(Constants.KEY_TEXTVIEW_TEXT));
+        if(savedInstanceState.containsKey(Constants.KEY_MAIL)) {
+            email.setText(savedInstanceState.getString(Constants.KEY_MAIL));
         }
 
         if(savedInstanceState.containsKey(Constants.KEY_AGE)) {
-            datePick.setText(savedInstanceState.getString(Constants.KEY_AGE));
+            dob.setText(savedInstanceState.getString(Constants.KEY_AGE));
         }
     }
 
@@ -60,26 +64,29 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState,outPersistentState);
 
-        outState.putString(Constants.KEY_TEXTVIEW_TEXT, mTextView.getText().toString());
-        outState.putString(Constants.KEY_AGE,datePick.getText().toString());
+        outState.putString(Constants.KEY_MAIL, email.getText().toString());
+        outState.putString(Constants.KEY_AGE, dob.getText().toString());
 
     }
 
     public void submitForm(View view) {
-        mTextView = findViewById(R.id.name);
+        email = findViewById(R.id.name);
         userName = findViewById(R.id.username);
         eText = findViewById(R.id.email);
-        age = findViewById(R.id.datePick);
+        age = findViewById(R.id.dob);
+        bio = findViewById(R.id.bio);
+        occupation = findViewById(R.id.occupation);
 
         if(!isValidEmail(eText.getText())){
             eText.setError("Email not valid!");
             return;
         }
 
-        if(mTextView.getText().toString().matches("")){
-            mTextView.setError("Cannot Be Blank!");
+        if(email.getText().toString().matches("")){
+            email.setError("Cannot Be Blank!");
             return;
         }
+
 
         if(userName.getText().toString().matches("")){
             userName.setError("Cannot Be Blank!");
@@ -90,8 +97,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Bundle bundle = new Bundle();
 
 
-        bundle.putString(Constants.KEY_NAME, mTextView.getText().toString());
+        bundle.putString(Constants.KEY_NAME, email.getText().toString());
         bundle.putString(Constants.KEY_AGE, age.getText().toString());
+        bundle.putString(Constants.KEY_BIO, bio.getText().toString());
+        bundle.putString(Constants.KEY_OCC, occupation.getText().toString());
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -108,31 +117,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
         Date eighteen = new Date(1050871680000L);
-        Button b = findViewById(R.id.submitButton);
-
-        datePick = findViewById(R.id.datePick);
-
+        Button b = findViewById(R.id.button2);
+        dob = findViewById(R.id.dob);
         Calendar mCalender = Calendar.getInstance();
-
         mCalender.set(Calendar.YEAR, year);
         mCalender.set(Calendar.MONTH, month);
         mCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         Date d = new Date();
 
-        Long aLong = Math.subtractExact(d.getTime(), mCalender.getTime().getTime());
-
-
-        int age = (int) Long.divideUnsigned(aLong, 31557600000L);
+        Long LAge = Math.subtractExact(d.getTime(), mCalender.getTime().getTime());
+        int age = (int) Long.divideUnsigned(LAge, 31557600000L);
         StringBuilder str = new StringBuilder();
-        str.append("Age: ");
         str.append(age);
+        str.append(" Years Old.");
 
         if(mCalender.getTime().compareTo(eighteen) > 0) {
-            datePick.setError("Under 18");
+            dob.setError("Must Be Older Than 18!");
             b.setEnabled(false);
         } else {
-            datePick.setText(str);
+            dob.setText(str);
             b.setEnabled(true);
         }
 

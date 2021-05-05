@@ -16,15 +16,16 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_container"
-            android:layout_marginTop="@dimen/margin_container"
-            android:text="@string/title"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/login"
+            android:textColor="#620073"
             android:textSize="@dimen/medium_font_size" />
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_horizontal_name"
+            android:layout_marginHorizontal="30dp"
             android:text="@string/my_name"
             android:layout_marginTop="@dimen/margin_container" />
 
@@ -59,36 +60,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_container"
+            android:ems="10"
+            android:hint="@string/bio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/occupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_container"
+            android:ems="10"
+            android:hint="@string/occupation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/datePick"
-            android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+
+         <TextView
+            android:id="@+id/dob"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/margin_container"
-            android:layout_marginTop="@dimen/margin_container"
             android:text="Date of Birth" />
-
         <Button
             android:id="@+id/btPickDate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/datePick"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/margin_container"
-            android:layout_marginTop="@dimen/margin_container"
+            android:layout_height="match_parent"
             android:text="Pick Date" />
 
+
+    </LinearLayout>
+
         <Button
-            android:id="@+id/submitButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_horizontal_submit"
-            android:layout_marginTop="@dimen/margin_container"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:text="Submit"
             android:onClick="submitForm"
-            android:enabled="false"/>
+            />
+
 
 
 

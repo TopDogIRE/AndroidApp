@@ -7,22 +7,84 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".RelativeAlignmentExampleActivity">
+
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_container"
+            android:text="@string/profile"
+            android:textSize="@dimen/large_font_size"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_container"
+            app:srcCompat="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:id="@+id/layout1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_below="@+id/imageView"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true">
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageView"
-                android:layout_marginTop="@dimen/margin_container"
                 android:text="@string/name"
                 android:textSize="@dimen/small_font_size"/>
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_toRightOf="@+id/name"
+                android:layout_centerHorizontal="true"
+                android:text="@string/age"
+                android:textSize="@dimen/small_font_size"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/occupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout1"
+            android:layout_centerHorizontal="true"
+            android:text="@string/occupation"
+            android:textSize="@dimen/xsmall_font_size"/>
+
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/occupation"
+            android:layout_centerHorizontal="true"
+            android:text="@string/bio"
+            android:textSize="@dimen/small_font_size"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/backbt"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/bio"
+            />
+
+
     </RelativeLayout>
+
 </ScrollView>
