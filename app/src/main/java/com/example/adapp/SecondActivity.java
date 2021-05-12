@@ -1,8 +1,8 @@
 package com.example.adapp;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class SecondActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class SecondActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,MyListener {
 
     private FragmentManager manager;
     private DrawerLayout drawer;
@@ -47,13 +47,18 @@ public class SecondActivity extends AppCompatActivity implements NavigationView.
         Bundle b = intent.getExtras();
 
         if(b != null) {
-            if (b.containsKey(Constants.KEY_NAME) && b.containsKey(Constants.KEY_AGE) && b.containsKey(Constants.KEY_BIO) && b.containsKey(Constants.KEY_OCC)) {
+            if (b.containsKey(Constants.KEY_NAME)
+                    && b.containsKey(Constants.KEY_AGE)
+                    && b.containsKey(Constants.KEY_BIO)
+                    && b.containsKey(Constants.KEY_OCC)) {
                 name = b.getString(Constants.KEY_NAME);
                 age = b.getString(Constants.KEY_AGE);
                 bio = b.getString(Constants.KEY_BIO);
                 occ = b.getString(Constants.KEY_OCC);
             }
         }
+
+
         ProfileFragment fragment = new ProfileFragment();
         fragment.setAttachment(new Attachment(name, age, bio, occ));
 
@@ -73,18 +78,29 @@ public class SecondActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.nav_profile) {
-            ProfileFragment fragment = new ProfileFragment();
-            fragment.setAttachment(new Attachment(name, age, bio, occ));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-        }else if(item.getItemId() == R.id.nav_profile){
-            ProfileFragment fragment = new ProfileFragment();
-            fragment.setAttachment(new Attachment(name, age, bio, occ));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-        }else if(item.getItemId() == R.id.nav_settings){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+        switch (item.getItemId()) {
+            case R.id.nav_profile:
+                ProfileFragment fragment = new ProfileFragment();
+                fragment.setAttachment(new Attachment(name, age, bio, occ));
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        fragment).commit();
+                break;
+            case R.id.nav_matches:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new MatchesFragment()).commit();
+                break;
+            case R.id.nav_settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SettingsFragment()).commit();
+                break;
         }
         return true;
+    }
+
+    @Override
+    public void matchesLikeToast(String n) {
+        Toast.makeText(this,String.format("You Liked " + n ),Toast.LENGTH_LONG).show();
     }
 
 
