@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/card_view"
     app:cardBackgroundColor="@android:color/white"
     app:cardElevation="2dp"
     app:cardPreventCornerOverlap="true">
@@ -32,12 +33,16 @@
                 android:text="@string/shr_match_title"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
-            <Button
+            <CheckBox
                 android:id="@+id/like_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/like"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                app:icon="@drawable/like_heart"
+                app:buttonTint="@color/teal_700"
+                android:button="@drawable/liked_heart"
+                style="?attr/materialButtonOutlinedStyle"/>
 
         </LinearLayout>
     </LinearLayout>

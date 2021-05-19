@@ -1,4 +1,5 @@
 package com.example.adapp;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,10 +14,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.adapp.model.Match;
+import com.example.adapp.viewModels.MatchesViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class SecondActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,MyListener {
 
+    private MatchesViewModel viewModel;
     private FragmentManager manager;
     private DrawerLayout drawer;
     private String name;
@@ -32,6 +36,7 @@ public class SecondActivity extends AppCompatActivity implements NavigationView.
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        viewModel = new MatchesViewModel();
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -57,7 +62,9 @@ public class SecondActivity extends AppCompatActivity implements NavigationView.
                 occ = b.getString(Constants.KEY_OCC);
             }
         }
-
+        if(savedInstanceState != null){
+            return;
+        }
 
         ProfileFragment fragment = new ProfileFragment();
         fragment.setAttachment(new Attachment(name, age, bio, occ));
@@ -99,10 +106,26 @@ public class SecondActivity extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public void matchesLikeToast(String n) {
-        Toast.makeText(this,String.format("You Liked " + n ),Toast.LENGTH_LONG).show();
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
+    @Override
+    public void matchesLikeToast(Match m) {
+        if(!m.liked) {
+            Toast.makeText(this, String.format("You Liked " + m.name), Toast.LENGTH_SHORT).show();
+            m.liked = true;
+        } else {
+            m.liked = false;
+        }
+        viewModel.updateMatch(m);
+    }
+
+    @Override
+    protected void onPause() {
+        viewModel.clear();
+        super.onPause();
+    }
 
     public static class Attachment {
         String name;

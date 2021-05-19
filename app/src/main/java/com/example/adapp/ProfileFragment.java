@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -22,13 +23,27 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+        if(savedInstanceState != null) {
+            if (savedInstanceState.containsKey(Constants.KEY_NAME)
+                    && savedInstanceState.containsKey(Constants.KEY_AGE)
+                    && savedInstanceState.containsKey(Constants.KEY_BIO)
+                    && savedInstanceState.containsKey(Constants.KEY_OCC)) {
+                String name = savedInstanceState.getString(Constants.KEY_NAME);
+                String age = savedInstanceState.getString(Constants.KEY_AGE);
+                String bio = savedInstanceState.getString(Constants.KEY_BIO);
+                String occ = savedInstanceState.getString(Constants.KEY_OCC);
+
+                SecondActivity.Attachment a = new SecondActivity.Attachment(name,age,bio,occ);
+                this.setAttachment(a);
+            }
+        }
     }
 
-
     @Override
-    public View onCreateView( @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         name = view.findViewById(R.id.name);
         bio =  view.findViewById(R.id.bio);
         age =  view.findViewById(R.id.age);
@@ -38,22 +53,19 @@ public class ProfileFragment extends Fragment {
         age.setText(this.attachment.age);
         bio.setText(this.attachment.bio);
         occupation.setText((this.attachment.occ));
-
         return view;
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        outState.putString(Constants.KEY_NAME, attachment.name);
-        outState.putString(Constants.KEY_BIO, attachment.bio);
-        outState.putString(Constants.KEY_AGE, attachment.age);
-        outState.putString(Constants.KEY_OCC,attachment.occ);
+        outState.putString(Constants.KEY_NAME, this.attachment.name);
+        outState.putString(Constants.KEY_BIO, this.attachment.bio);
+        outState.putString(Constants.KEY_AGE, this.attachment.age);
+        outState.putString(Constants.KEY_OCC, this.attachment.occ);
     }
 
-
-    public void setAttachment(SecondActivity.Attachment attach) {
+    void setAttachment(SecondActivity.Attachment attach) {
         this.attachment = attach;
     }
 }

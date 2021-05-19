@@ -1,5 +1,7 @@
 package com.example.adapp;
 
+import com.example.adapp.model.Match;
+
 public interface MyListener {
-    void matchesLikeToast(String n);
+    void matchesLikeToast(Match m);
 }

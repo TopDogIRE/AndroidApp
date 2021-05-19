@@ -22,7 +22,8 @@ package="com.example.adapp">
     <activity
         android:name=".SecondActivity"
         android:label="@string/title_activity_second"
-        android:theme="@style/Theme.adapp.NoActionBar"></activity>
+        android:theme="@style/Theme.adapp.NoActionBar">
+    </activity>
     <activity
         android:name=".MainActivity"
         android:windowSoftInputMode="stateHidden">

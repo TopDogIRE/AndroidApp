@@ -3,24 +3,18 @@ package com.example.adapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.adapp.model.Match;
 import com.example.adapp.network.ImageRequester;
-import com.example.adapp.network.MatchesEntry;
-
 import java.util.List;
 
-/**
- * Adapter used to show a simple grid of products.
- */
 public class MatchesCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchesCardViewHolder> {
 
-    private List<MatchesEntry> matchesList;
+    private List<Match> matchesList;
     private ImageRequester imageRequester;
 
-    MatchesCardRecyclerViewAdapter(List<MatchesEntry> matchesList) {
+    MatchesCardRecyclerViewAdapter(List<Match> matchesList) {
         this.matchesList = matchesList;
         imageRequester = ImageRequester.getInstance();
     }
@@ -34,16 +28,21 @@ public class MatchesCardRecyclerViewAdapter extends RecyclerView.Adapter<Matches
 
     @Override
     public void onBindViewHolder(@NonNull MatchesCardViewHolder holder, int position) {
-        if (matchesList != null && position < matchesList.size()) {
-            MatchesEntry product = matchesList.get(position);
-            holder.name.setText(product.name);
-            imageRequester.setImageFromUrl(holder.matchImage, product.url);
+        if (matchesList != null) {
+            Match m = this.matchesList.get(position);
+            holder.name.setText(m.name);
+            holder.m = m;
+            holder.setLiked(m.liked);
+            imageRequester.setImageFromUrl(holder.matchImage, m.imageUrl);
         }
     }
-
 
     @Override
     public int getItemCount () {
         return matchesList.size();
+    }
+
+    public void setMatchesList(List<Match> m) {
+        this.matchesList = m;
     }
 }
