@@ -1,17 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".SettingsFragment"
+    android:padding="@dimen/padd">
 
-
-    <TextView
-        android:id="@+id/settings_txt"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/settings_fragment" />
+        android:layout_height="wrap_content"
+        tools:context=".SettingsFragment">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reminder_time"
+                android:textSize="@dimen/medium_font_size"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:entries="@array/time_arrays"
+                android:id="@+id/time_spinner"
+                android:prompt="@string/timerem"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear2"
+            android:layout_below="@+id/linear1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/max_search"
+                android:textSize="@dimen/medium_font_size"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:entries="@array/max_dist_array"
+                android:id="@+id/max_dist"
+                android:prompt="@string/max_search"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gender_txt"
+            android:layout_below="@+id/linear2"
+            android:text="@string/gender_txt"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spinner_height"
+            android:spinnerMode="dropdown"
+            android:layout_below="@id/gender_txt"
+            android:id="@+id/gender"
+            android:entries="@array/gender_arrays"
+            android:prompt="@string/gender"
+            android:textAlignment="center"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gender"
+            android:text="@string/private_acct"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/checkbox1"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/age_range"
+            android:layout_below="@+id/checkbox1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age_range"
+                android:textSize="@dimen/medium_font_size"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spinner_height"
+                android:spinnerMode="dropdown"
+                android:id="@+id/minAge"
+                android:entries="@array/age_arrays"
+                android:prompt="@string/gender"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dash"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spinner_height"
+                android:spinnerMode="dropdown"
+                android:id="@+id/maxAge"
+                android:entries="@array/age_arrays"
+                android:prompt="@string/gender"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/age_range"
+            android:id="@+id/save_settings"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="@string/save" />
+
+
+    </RelativeLayout>
+</ScrollView>

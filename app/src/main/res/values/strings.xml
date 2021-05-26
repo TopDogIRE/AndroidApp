@@ -32,4 +32,79 @@
     <string name="menu_settings">Settings</string>
     <string name="like">Like</string>
     <string name="TOAST_STRING">You Liked</string>
+    <string name="set_save">Settings Saved</string>
+    <string name="timerem">Time</string>
+    <string name="gender_txt">Gender:</string>
+    <string name="reminder_time">Daily Matches Time</string>
+    <string name="gender">Gender</string>
+    <string name="private_acct">Private Account</string>
+    <string name="max_search">Max Search Dist(Mi)</string>
+    <string name="dash">-</string>
+    <string name="save">Save</string>
+    <string name="age_range">Age Range</string>
+    <string-array name="gender_arrays">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Non-Binary</item>
+    </string-array>
+    <string-array name="time_arrays">
+        <item>0:00</item>
+        <item>1:00</item>
+        <item>2:00</item>
+        <item>3:00</item>
+        <item>4:00</item>
+        <item>5:00</item>
+        <item>6:00</item>
+        <item>7:00</item>
+        <item>8:00</item>
+        <item>9:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+        <item>21:00</item>
+        <item>22:00</item>
+        <item>23:00</item>
+    </string-array>
+    <string-array name="max_dist_array">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+        <item>50</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="age_arrays">
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>40+</item>
+    </string-array>
+
 </resources>
