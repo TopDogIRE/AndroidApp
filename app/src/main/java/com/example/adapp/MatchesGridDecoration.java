@@ -2,9 +2,7 @@ package com.example.adapp;
 
 import android.graphics.Rect;
 import android.view.View;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 
 public class MatchesGridDecoration extends RecyclerView.ItemDecoration {
     private int largePadding;

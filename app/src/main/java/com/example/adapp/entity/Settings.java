@@ -16,7 +16,7 @@ public class Settings {
     private int maxDist;
 
     @ColumnInfo(name = "gender")
-    private String gender; //0 for male, 1 for female, 3 for non-binary
+    private String gender;
 
     @ColumnInfo(name = "private_account")
     private boolean privateAcct;

@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.adapp.entity.Settings;
 import com.example.adapp.viewModels.SettingsViewModel;
+import com.google.android.material.slider.RangeSlider;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     private Spinner minAge;
     private Spinner maxAge;
     private Button butt;
+    private RangeSlider rangeSlider;
 
     private SettingsViewModel settingsViewModel;
 
