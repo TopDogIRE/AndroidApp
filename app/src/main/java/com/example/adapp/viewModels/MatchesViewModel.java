@@ -1,7 +1,5 @@
 package com.example.adapp.viewModels;
 
-
-
 import com.example.adapp.dataModels.MatchesModel;
 import com.example.adapp.model.Match;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -18,25 +16,22 @@ public class MatchesViewModel {
         matchesModel = new MatchesModel();
     }
 
-    public void addMatch(Match m) {
-        matchesModel.addMatch(m);
-    }
 
-    public void getMatches(Consumer<ArrayList<Match>> responseCallback) {
+    public void getMatches(Consumer<ArrayList<Match>> resultCallback) {
         matchesModel.getMatches(
-                (QuerySnapshot querySnapshot) -> {
-                    if (querySnapshot != null) {
-                        ArrayList<Match> matches = new ArrayList<>();
-                        for (DocumentSnapshot matchesSnap : querySnapshot.getDocuments()) {
-                            Match m = matchesSnap.toObject(Match.class);
-                            assert m != null;
-                            m.uid = matchesSnap.getId();
-                            matches.add(m);
+                (QuerySnapshot querySnapShot) -> {
+                    if (querySnapShot != null) {
+                        ArrayList<Match> myMatches = new ArrayList<>();
+                        for (DocumentSnapshot matchSnapshot : querySnapShot.getDocuments()) {
+                            Match matches = matchSnapshot.toObject(Match.class);
+                            assert matches != null;
+                            matches.uid = matchSnapshot.getId();
+                            myMatches.add(matches);
                         }
-                        responseCallback.accept(matches);
+                        resultCallback.accept(myMatches);
                     }
                 },
-                (databaseError -> System.out.println("Error reading Todo Items: " + databaseError))
+                (databaseError -> System.out.println("An error occurred reading matches" + databaseError))
         );
     }
 
