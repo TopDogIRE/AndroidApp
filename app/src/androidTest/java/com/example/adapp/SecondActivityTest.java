@@ -6,7 +6,6 @@ import android.view.Gravity;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.espresso.contrib.NavigationViewActions;
-import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -34,8 +33,7 @@ public class SecondActivityTest {
 
     @Rule
     public ActivityScenarioRule rule = new ActivityScenarioRule<>(SecondActivity.class);
-
-
+    
 
     @Test
     public void checkNavDrawerSettings() {
