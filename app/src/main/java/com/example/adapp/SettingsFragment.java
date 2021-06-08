@@ -79,9 +79,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             maxAge.setSelection(set.getMaxAge());
 
         };
-
         settingsViewModel.loadSettings(this.getContext()).observe(this.getViewLifecycleOwner(), getSettingsObserver);
-
         return view;
     }
 
@@ -105,7 +103,6 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 return i;
             }
         }
-
         return 0;
     }
 

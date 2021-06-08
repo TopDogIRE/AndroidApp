@@ -36,22 +36,6 @@ public class SecondActivityTest {
     public ActivityScenarioRule rule = new ActivityScenarioRule<>(SecondActivity.class);
 
 
-    @Test
-    public void testMatchesLikeToast() {
-        onView(isRoot()).perform(waitFor(1000));
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-        onView(isRoot()).perform(waitFor(1000));
-        onView(withText(R.string.matches)).perform(click());
-        onView(isRoot()).perform(waitFor(1000));
-        Espresso.pressBack();
-        onView(isRoot()).perform(waitFor(1000));
-        onView(withId(R.id.matches_txt)).perform(RecyclerViewActions.scrollToPosition(1));
-        onView(withId(R.id.matches_txt)).perform(RecyclerViewActions.actionOnItemAtPosition(1, new TestUtils.ClickOnLikeButton()));
-        onView(withId(R.id.matches_txt)).perform(RecyclerViewActions.actionOnItemAtPosition(1, new TestUtils.ClickOnLikeButton()));
-
-        onView(withText(R.string.mssage)).inRoot(new TestUtils.ToastMatcher())
-                .check(matches(isDisplayed()));
-    }
 
     @Test
     public void checkNavDrawerSettings() {
@@ -63,11 +47,6 @@ public class SecondActivityTest {
         Espresso.pressBack();
         onView(isRoot()).perform(waitFor(1000));
 
-        onView(withId(R.id.time_spinner)).perform(click());
-        onView(withText("1:00")).perform(click());
-        onView(withId(R.id.max_dist)).perform(click());
-        onData(allOf(is(instanceOf(String.class)), is("10")))
-                .perform(click());
         onView(withId(R.id.gender)).perform(click());
         onView(withText("Female")).perform(click());
         onView(withId(R.id.checkbox1)).perform(click());

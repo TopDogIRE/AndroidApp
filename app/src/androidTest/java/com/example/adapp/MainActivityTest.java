@@ -33,8 +33,8 @@ public class MainActivityTest {
         onView(withId(R.id.name)).perform(typeText("Cathal Mullen"));
         onView(withId(R.id.email)).perform(typeText("cathal777@gmail.com"));
         onView(withId(R.id.username)).perform(typeText("cathal777"));
-        onView(withId(R.id.bio)).perform(typeText("I'm Irish"));
-        onView(withId(R.id.occupation)).perform(typeText("Software Developer"));
+
+
 
         onView(withId(R.id.btPickDate)).perform(scrollTo(),(click()));
 
@@ -45,8 +45,8 @@ public class MainActivityTest {
 
         onView(allOf(withId(R.id.profile))).check(matches(withText("Your Profile!")));
         onView(allOf(withId(R.id.name))).check(matches(withText("Cathal Mullen")));
-        onView(allOf(withId(R.id.bio))).check(matches(withText("I'm Irish")));
-        onView(allOf(withId(R.id.occupation))).check(matches(withText("Software Developer")));
+
+
         onView(allOf(withId(R.id.age))).check((matches(withText("21 Years Old."))));
 
     }
@@ -57,15 +57,10 @@ public class MainActivityTest {
         onView(withId(R.id.name)).perform(typeText("Cathal Mullen"));
         onView(withId(R.id.email)).perform(typeText("cathal777@gmail.com"));
         onView(withId(R.id.username)).perform(typeText("cathal777"));
-        onView(withId(R.id.bio)).perform(typeText("I'm Irish"));
-        onView(withId(R.id.occupation)).perform(typeText("Software Developer"));
 
         TestUtils.rotateScreen(TestUtils.getActivity(activityScenarioRule));
 
-
         onView(withId(R.id.name)).check(matches(withText("Cathal Mullen")));
-        onView(withId(R.id.bio)).check(matches(withText("I'm Irish")));
-        onView(withId(R.id.occupation)).check(matches(withText("Software Developer")));
         onView(withId(R.id.username)).check(matches(withText("cathal777")));
         onView(withId(R.id.email)).check(matches(withText("cathal777@gmail.com")));
     }
@@ -119,13 +114,9 @@ public class MainActivityTest {
 
     @Test
     public void checkUnderEighteen() {
-
         onView(withId(R.id.btPickDate)).perform(scrollTo(),(click()));
-
         onView(withClassName(Matchers.equalTo(android.widget.DatePicker.class.getName()))).perform(PickerActions.setDate(2004 , 6, 28));
         onView(withText("OK")).perform(click());
-
         onView(allOf(withId(R.id.dob), hasErrorText("Must Be Older Than 18!")));
-
     }
 }
