@@ -50,11 +50,11 @@
                 android:textSize="@dimen/medium_font_size"/>
 
             <Spinner
+                android:id="@+id/max_dist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown"
                 android:entries="@array/max_dist_array"
-                android:id="@+id/max_dist"
                 android:prompt="@string/max_search"
                 android:layout_marginStart="10dp"/>
 

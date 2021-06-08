@@ -21,6 +21,7 @@ public class MatchesFragment extends Fragment {
     public ArrayList matchesList = new ArrayList();
     private MatchesViewModel viewModel = new MatchesViewModel();
     private RecyclerView recyclerView;
+    MatchesCardRecyclerViewAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,18 +40,22 @@ public class MatchesFragment extends Fragment {
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.matches_grid_spacing_small);
         recyclerView = view.findViewById(R.id.matches_txt);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-        MatchesCardRecyclerViewAdapter adapter = new MatchesCardRecyclerViewAdapter(matchesList);
+        adapter = new MatchesCardRecyclerViewAdapter(matchesList);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new MatchesGridDecoration(largePadding, smallPadding));
+        getMatches();
 
+        return view;
+    }
+
+    public void getMatches(){
         viewModel.getMatches(
                 (ArrayList<Match> matches) -> {
                     adapter.setMatchesList(matches);
                     adapter.notifyDataSetChanged();
                 });
-
-        return view;
     }
+
 
     @Override
     public void onPause() {

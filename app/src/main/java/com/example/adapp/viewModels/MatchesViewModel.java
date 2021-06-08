@@ -18,10 +18,6 @@ public class MatchesViewModel {
         matchesModel = new MatchesModel();
     }
 
-    public void addMatch(Match m) {
-        matchesModel.addMatch(m);
-    }
-
     public void getMatches(Consumer<ArrayList<Match>> responseCallback) {
         matchesModel.getMatches(
                 (QuerySnapshot querySnapshot) -> {
