@@ -18,3 +18,4 @@ public class ExampleInstrumentedTest {
         assertEquals("com.example.adapp", appContext.getPackageName());
     }
 
+}
