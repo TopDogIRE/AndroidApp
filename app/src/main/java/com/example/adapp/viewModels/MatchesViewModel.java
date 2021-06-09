@@ -17,7 +17,9 @@ public class MatchesViewModel {
     }
 
 
+
     public void getMatches(Consumer<ArrayList<Match>> resultCallback) {
+
         matchesModel.getMatches(
                 (QuerySnapshot querySnapShot) -> {
                     if (querySnapShot != null) {

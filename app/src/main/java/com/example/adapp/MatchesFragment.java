@@ -36,11 +36,14 @@ public class MatchesFragment extends Fragment {
     public ArrayList matchesList = new ArrayList();
     private MatchesViewModel viewModel = new MatchesViewModel();
     private RecyclerView recyclerView;
+
     LocationManager locationManager;
     Location userLoc;
     MatchesCardRecyclerViewAdapter adapter;
     SettingsViewModel settingsViewModel;
     Float maxDist = 16093.44f;  // 10 miles at first but is set by settings in the getDistanceSettings function
+    MatchesCardRecyclerViewAdapter adapter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,13 +69,28 @@ public class MatchesFragment extends Fragment {
         adapter = new MatchesCardRecyclerViewAdapter(matchesList);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new MatchesGridDecoration(largePadding, smallPadding));
+
         gpsUpdates(view);
         getDistanceSetting();
         getMatches();
 
 
         return view;
+
+        getMatches();
+
+        return view;
     }
+
+    public void getMatches(){
+        viewModel.getMatches(
+                (ArrayList<Match> matches) -> {
+                    adapter.setMatchesList(matches);
+                    adapter.notifyDataSetChanged();
+                });
+
+    }
+
 
     @Override
     public void onPause() {
