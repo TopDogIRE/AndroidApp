@@ -1,5 +1,6 @@
 package com.example.adapp.dataModels;
 
+
 import com.example.adapp.model.Match;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -46,6 +47,8 @@ public class MatchesModel {
         data.put("name", m.name);
         data.put("liked", m.liked);
         data.put("imageUrl", m.imageUrl);
+        data.put("lat", m.lat);
+        data.put("longitude",m.longitude);
         todoItemRef.update(data);
     }
 

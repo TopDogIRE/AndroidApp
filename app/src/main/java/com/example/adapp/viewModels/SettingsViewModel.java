@@ -11,7 +11,6 @@ import com.example.adapp.entity.Settings;
 
 import java.util.List;
 
-
 public class SettingsViewModel extends ViewModel {
 
     public LiveData<List<Settings>> loadSettings(Context context) {
@@ -25,12 +24,4 @@ public class SettingsViewModel extends ViewModel {
             db.settingsDao().saveSettings(settings);
         });
     }
-
-    public void nukeAll(Context context) {
-        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
-        db.getTransactionExecutor().execute(() -> {
-            db.clearAllTables();
-        });
-    }
-
 }

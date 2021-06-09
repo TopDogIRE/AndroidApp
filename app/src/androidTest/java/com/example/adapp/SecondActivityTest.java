@@ -33,7 +33,6 @@ public class SecondActivityTest {
 
     @Rule
     public ActivityScenarioRule rule = new ActivityScenarioRule<>(SecondActivity.class);
-    
 
     @Test
     public void checkNavDrawerSettings() {
@@ -90,6 +89,5 @@ public class SecondActivityTest {
         onView(allOf(withId(R.id.profile))).check((matches(withText("Your Profile!"))));
 
     }
-
 
 }

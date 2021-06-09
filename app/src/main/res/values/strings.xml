@@ -17,7 +17,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="shr_menu_title">Menu</string>
     <string name="login">Log In</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="provider_started_running">GPS provider started running</string>
     <string name="settings_fragment">Settings XXX</string>
+    <string name="enable_location">Enable Location</string>
+    <string name="location_message">Your Locations Settings is set to \'Off\'. Please Enable Location to use this app</string>
+    <string name="location_settings">Location Settings</string>
+    <string name="location_cancel">Cancel</string>
     <string name="matches_fragment">Your Mathces XXX</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
